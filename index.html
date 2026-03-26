@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بديع | للتصاميم الرقمية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://font.fontsource.org/cairo.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #1a1a2e;
+            color: #e0e0e0;
+        }
+        .gold-text {
+            color: #d4af37;
+        }
+        .gold-bg {
+            background-color: #d4af37;
+        }
+        .gold-border {
+            border-color: #d4af37;
+        }
+        .gold-hover:hover {
+            background-color: #b5952f;
+        }
+        .hero-pattern {
+            background-image: url('https://image.qwenlm.ai/public_source/6f24cdd4-af44-4fe2-b352-a00edfa913bf/1a8fe4dbf-a8fe-47e0-9394-3fd6a21efb26.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b5952f;
+        }
+        .logo-img {
+            max-height: 60px;
+            width: auto;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: #d4af37;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .card-dark {
+            background-color: #16213e;
+            border: 1px solid #2a2a4a;
+        }
+        .card-dark:hover {
+            border-color: #d4af37;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+        .input-dark {
+            background-color: #16213e;
+            border: 1px solid #2a2a4a;
+            color: #e0e0e0;
+        }
+        .input-dark:focus {
+            border-color: #d4af37;
+            outline: none;
+        }
+        .input-dark::placeholder {
+            color: #888;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+        .preview-btn {
+            transition: all 0.3s;
+        }
+        .preview-btn:hover {
+            background-color: #d4af37;
+            color: white;
+        }
+        /* Arabic Calligraphy Font */
+        .arabic-calligraphy {
+            font-family: 'Amiri', serif;
+            font-weight: 700;
+        }
+        /* Portfolio Card Styles */
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            background: #16213e;
+            border: 2px solid #2a2a4a;
+            transition: all 0.4s ease;
+        }
+        .portfolio-item:hover {
+            border-color: #d4af37;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+        }
+        .portfolio-preview {
+            width: 100%;
+            height: 250px;
+            background: #0f0f1a;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .portfolio-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .portfolio-item:hover .portfolio-preview img {
+            transform: scale(1.1);
+        }
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.8) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        .portfolio-info {
+            padding: 20px;
+        }
+        .portfolio-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+        .portfolio-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #d4af37;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        .portfolio-link:hover {
+            background: #d4af37;
+            color: #1a1a2e;
+        }
+        .live-indicator {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #25D366;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: modalFadeIn 0.3s ease-out;
+        }
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.3s ease-out;
+            border-radius: 10px;
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 1001;
+        }
+        .modal-close:hover {
+            color: #d4af37;
+        }
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 50px;
+            cursor: pointer;
+            transition: color 0.3s;
+            padding: 20px;
+            z-index: 1001;
+        }
+        .modal-nav:hover {
+            color: #d4af37;
+        }
+        .modal-prev {
+            left: 20px;
+        }
+        .modal-next {
+            right: 20px;
+        }
+        .modal-title {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            z-index: 1001;
+        }
+        .modal-counter {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            color: white;
+            font-size: 18px;
+            z-index: 1001;
+        }
+        .hero-title {
+            font-family: 'Amiri', serif;
+            font-size: 4rem;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+        }
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="smooth-scroll">
+
+    <!-- Navigation -->
+    <nav class="bg-[#16213e] shadow-lg fixed w-full z-50 border-b border-[#2a2a4a]">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="https://i.postimg.cc/9X9srHCR/w-removebg-preview-removebg-preview.png" alt="شعار بديع" class="logo-img">
+                <span class="text-2xl font-bold gold-text arabic-calligraphy hidden sm:block">بديع</span>
+            </div>
+            <div class="hidden md:flex space-x-8 space-x-reverse">
+                <a href="#home" class="nav-link hover:text-[#d4af37] transition duration-300">الرئيسية</a>
+                <a href="#features" class="nav-link hover:text-[#d4af37] transition duration-300">المميزات</a>
+                <a href="#portfolio" class="nav-link hover:text-[#d4af37] transition duration-300">معرض الأعمال</a>
+                <a href="#services" class="nav-link hover:text-[#d4af37] transition duration-300">خدماتنا</a>
+                <a href="#contact" class="bg-[#d4af37] text-white px-5 py-2 rounded-full gold-hover transition duration-300">تواصل معنا</a>
+            </div>
+            <button class="md:hidden text-[#d4af37] focus:outline-none" onclick="toggleMenu()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-[#16213e] border-t border-[#2a2a4a]">
+            <div class="flex flex-col p-4 space-y-3">
+                <a href="#home" class="hover:text-[#d4af37] transition duration-300 py-2">الرئيسية</a>
+                <a href="#features" class="hover:text-[#d4af37] transition duration-300 py-2">المميزات</a>
+                <a href="#portfolio" class="hover:text-[#d4af37] transition duration-300 py-2">معرض الأعمال</a>
+                <a href="#services" class="hover:text-[#d4af37] transition duration-300 py-2">خدماتنا</a>
+                <a href="#contact" class="bg-[#d4af37] text-white px-5 py-2 rounded-full text-center gold-hover transition duration-300">تواصل معنا</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+        <div class="absolute inset-0 hero-pattern"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <div class="mb-8 animate-fade-in">
+                <img src="https://i.postimg.cc/9X9srHCR/w-removebg-preview-removebg-preview.png" alt="شعار بديع" class="logo-img mx-auto" style="max-height: 120px;">
+            </div>
+            <h1 class="hero-title mb-6 text-white leading-tight animate-fade-in">
+                <span class="gold-text arabic-calligraphy">بديع</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto animate-fade-in">
+                للتصاميم الرقمية الإبداعية - نحول أفكارك إلى واقع رقمي مذهل
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4 animate-fade-in">
+                <a href="https://wa.me/966570310415" class="bg-[#25D366] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#128C7E] transition duration-300 shadow-lg transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    تواصل عبر واتساب
+                </a>
+                <a href="#portfolio" class="bg-transparent text-[#d4af37] border-2 border-[#d4af37] px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#d4af37] hover:text-white transition duration-300 shadow-lg transform hover:-translate-y-1">
+                    شاهد أعمالي
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-[#16213e]">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">لماذا تختار بديع؟</h2>
+                <div class="w-24 h-1 bg-[#d4af37] mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="text-center p-6 rounded-xl card-dark transition duration-300">
+                    <div class="w-16 h-16 bg-[#1a1a2e] rounded-full flex items-center justify-center mx-auto mb-6 text-[#d4af37]">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">سرعة في الإنجاز</h3>
+                    <p class="text-gray-400">احصل على تصميمك جاهزاً في وقت قياسي، مع الحفاظ على أعلى معايير الجودة.</p>
+                </div>
+                <div class="text-center p-6 rounded-xl card-dark transition duration-300">
+                    <div class="w-16 h-16 bg-[#1a1a2e] rounded-full flex items-center justify-center mx-auto mb-6 text-[#d4af37]">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">إبداع وتميز</h3>
+                    <p class="text-gray-400">تصاميم إبداعية فريدة تعكس هويتك وتبرز جمالية مناسبتك.</p>
+                </div>
+                <div class="text-center p-6 rounded-xl card-dark transition duration-300">
+                    <div class="w-16 h-16 bg-[#1a1a2e] rounded-full flex items-center justify-center mx-auto mb-6 text-[#d4af37]">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">دعم متواصل</h3>
+                    <p class="text-gray-400">نرافقك من بداية الفكرة حتى التنفيذ النهائي مع دعم فني مستمر.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-[#1a1a2e]">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white arabic-calligraphy">معرض أعمال بديع</h2>
+                <p class="text-gray-400">تشكيلة من أعمالي السابقة في التصميم الرقمي</p>
+                <div class="w-24 h-1 bg-[#d4af37] mx-auto mt-4"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1: مسابقة العيد -->
+                <div class="portfolio-item">
+                    <div class="portfolio-preview" onclick="openModal(0)">
+                        <img src="https://i.postimg.cc/L8HmR8dR/Screenshot_2026_03_26_040208.png" alt="مسابقة العيد">
+                        <div class="portfolio-overlay">
+                            <span class="text-white text-sm">اضغط للتكبير</span>
+                        </div>
+                        <div class="live-indicator">
+                            <span class="live-dot"></span>
+                            مباشر
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title arabic-calligraphy">مسابقة العيد</h3>
+                        <p class="text-gray-400 text-sm mb-4">تصميم تفاعلي لمسابقة العيد</p>
+                        <a href="https://bade395.github.io/eid-competition/" target="_blank" class="portfolio-link">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            معاينة المشروع
+                        </a>
+                    </div>
+                </div>
+                <!-- Project 2: حفل الزفاف -->
+                <div class="portfolio-item">
+                    <div class="portfolio-preview" onclick="openModal(1)">
+                        <img src="https://i.postimg.cc/nhHnZh8x/Screenshot_2026_03_26_040223.png" alt="حفل الزفاف">
+                        <div class="portfolio-overlay">
+                            <span class="text-white text-sm">اضغط للتكبير</span>
+                        </div>
+                        <div class="live-indicator">
+                            <span class="live-dot"></span>
+                            مباشر
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title arabic-calligraphy">حفل الزفاف</h3>
+                        <p class="text-gray-400 text-sm mb-4">دعوة رقمية تفاعلية لحفل زفاف</p>
+                        <a href="https://bade395.github.io/okka/" target="_blank" class="portfolio-link">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            معاينة المشروع
+                        </a>
+                    </div>
+                </div>
+                <!-- Project 3: دعوة كافي -->
+                <div class="portfolio-item">
+                    <div class="portfolio-preview" onclick="openModal(2)">
+                        <img src="https://i.postimg.cc/3xK37xMY/Screenshot_2026_03_26_040237.png" alt="دعوة كافي">
+                        <div class="portfolio-overlay">
+                            <span class="text-white text-sm">اضغط للتكبير</span>
+                        </div>
+                        <div class="live-indicator">
+                            <span class="live-dot"></span>
+                            مباشر
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title arabic-calligraphy">دعوة كافي</h3>
+                        <p class="text-gray-400 text-sm mb-4">تصميم دعوة لمقهى كافي</p>
+                        <a href="https://bade395.github.io/NAJDORA/" target="_blank" class="portfolio-link">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            معاينة المشروع
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-[#16213e]">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white arabic-calligraphy">خدماتي</h2>
+                <div class="w-24 h-1 bg-[#d4af37] mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6 card-dark rounded-xl">
+                    <div class="text-[#d4af37] text-4xl mb-4">🎨</div>
+                    <h3 class="text-lg font-bold mb-2 text-white">تصميم دعوات رقمية</h3>
+                    <p class="text-gray-400 text-sm">دعوات زفاف ومناسبات تفاعلية</p>
+                </div>
+                <div class="text-center p-6 card-dark rounded-xl">
+                    <div class="text-[#d4af37] text-4xl mb-4">💻</div>
+                    <h3 class="text-lg font-bold mb-2 text-white">تصميم صفحات ويب</h3>
+                    <p class="text-gray-400 text-sm">صفحات هبوط ومواقع تعريفية</p>
+                </div>
+                <div class="text-center p-6 card-dark rounded-xl">
+                    <div class="text-[#d4af37] text-4xl mb-4">🎉</div>
+                    <h3 class="text-lg font-bold mb-2 text-white">تصاميم احتفالية</h3>
+                    <p class="text-gray-400 text-sm">تصاميم للأعياد والمناسبات</p>
+                </div>
+                <div class="text-center p-6 card-dark rounded-xl">
+                    <div class="text-[#d4af37] text-4xl mb-4">✨</div>
+                    <h3 class="text-lg font-bold mb-2 text-white">تصاميم مخصصة</h3>
+                    <p class="text-gray-400 text-sm">حسب طلبك الخاص</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-[#1a1a2e]">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white arabic-calligraphy">تواصل معي</h2>
+                <p class="text-gray-400">نسعد بخدمتكم والإجابة على جميع استفساراتكم</p>
+                <div class="w-24 h-1 bg-[#d4af37] mx-auto mt-4"></div>
+            </div>
+            <div class="card-dark rounded-2xl shadow-xl overflow-hidden border border-[#2a2a4a]">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="p-10 bg-gradient-to-br from-[#d4af37] to-[#b5952f] text-white flex flex-col justify-center">
+                        <h3 class="text-3xl font-bold mb-6 arabic-calligraphy">معلومات التواصل</h3>
+                        <div class="space-y-6">
+                            <a href="mailto:ahmed.abdalbadea@gmail.com" class="flex items-center hover:opacity-80 transition duration-300">
+                                <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center ml-4">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                </div>
+                                <div>
+                                    <p class="text-sm opacity-80">البريد الإلكتروني</p>
+                                    <p class="font-semibold">ahmed.abdalbadea@gmail.com</p>
+                                </div>
+                            </a>
+                            <a href="https://wa.me/966570310415" class="flex items-center hover:opacity-80 transition duration-300">
+                                <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center ml-4">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                                </div>
+                                <div>
+                                    <p class="text-sm opacity-80">واتساب</p>
+                                    <p class="font-semibold">0570310415</p>
+                                </div>
+                            </a>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center ml-4">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                </div>
+                                <div>
+                                    <p class="text-sm opacity-80">ساعات العمل</p>
+                                    <p class="font-semibold">يومياً من 9 صباحاً حتى 10 مساءً</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-10">
+                        <form id="contactForm" onsubmit="sendToWhatsApp(event)">
+                            <div class="mb-4">
+                                <label class="block text-gray-300 text-sm font-bold mb-2" for="name">الاسم الكريم</label>
+                                <input class="input-dark appearance-none rounded w-full py-3 px-3 leading-tight" id="name" type="text" placeholder="الاسم" required>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-300 text-sm font-bold mb-2" for="service">الخدمة المطلوبة</label>
+                                <select class="input-dark appearance-none rounded w-full py-3 px-3 leading-tight" id="service">
+                                    <option value="استفسار عام">استفسار عام</option>
+                                    <option value="تصميم دعوة زفاف">تصميم دعوة زفاف</option>
+                                    <option value="تصميم دعوة مناسبة">تصميم دعوة مناسبة</option>
+                                    <option value="تصميم صفحة ويب">تصميم صفحة ويب</option>
+                                    <option value="تصميم مسابقة">تصميم مسابقة</option>
+                                    <option value="تصميم مخصص">تصميم مخصص حسب الطلب</option>
+                                </select>
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-gray-300 text-sm font-bold mb-2" for="message">تفاصيل الاستفسار</label>
+                                <textarea class="input-dark appearance-none rounded w-full py-3 px-3 leading-tight" id="message" rows="4" placeholder="اكتب تفاصيل استفسارك..."></textarea>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <button class="bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3 px-6 rounded focus:outline-none w-full transition duration-300 flex items-center justify-center gap-2" type="submit">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                                    إرسال عبر واتساب
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0f0f1a] text-white py-10 border-t border-[#2a2a4a]">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center gap-3 mb-6 md:mb-0">
+                    <img src="https://i.postimg.cc/9X9srHCR/w-removebg-preview-removebg-preview.png" alt="شعار بديع" class="logo-img" style="max-height: 50px; filter: brightness(0) invert(1);">
+                    <span class="text-2xl font-bold gold-text arabic-calligraphy">بديع</span>
+                </div>
+                <div class="text-center md:text-left mb-6 md:mb-0">
+                    <p class="text-gray-400 mb-2">جميع الحقوق محفوظة © 2024 بديع</p>
+                    <p class="text-gray-500 text-sm">للتصاميم الرقمية والإبداع</p>
+                </div>
+                <div class="flex gap-4">
+                    <a href="mailto:ahmed.abdalbadea@gmail.com" class="text-gray-400 hover:text-[#d4af37] transition duration-300" title="البريد الإلكتروني">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </a>
+                    <a href="https://wa.me/966570310415" class="text-gray-400 hover:text-[#d4af37] transition duration-300" title="واتساب">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/966570310415" class="whatsapp-float" target="_blank" title="تواصل عبر واتساب">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </a>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal(event)">
+        <span class="modal-close" onclick="closeModalBtn()">&times;</span>
+        <div class="modal-counter" id="modalCounter">1 / 3</div>
+        <img class="modal-content" id="modalImage" src="" alt="صورة المشروع">
+        <div class="modal-title" id="modalTitle">اسم المشروع</div>
+        <div class="modal-nav modal-prev" onclick="changeImage(-1)">&#10095;</div>
+        <div class="modal-nav modal-next" onclick="changeImage(1)">&#10094;</div>
+    </div>
+
+    <script>
+        // Portfolio data with thumbnails and links
+        const portfolio = [
+            {
+                src: "https://i.postimg.cc/L8HmR8dR/Screenshot_2026_03_26_040208.png",
+                title: "مسابقة العيد",
+                link: "https://bade395.github.io/eid-competition/"
+            },
+            {
+                src: "https://i.postimg.cc/nhHnZh8x/Screenshot_2026_03_26_040223.png",
+                title: "حفل الزفاف",
+                link: "https://bade395.github.io/okka/"
+            },
+            {
+                src: "https://i.postimg.cc/3xK37xMY/Screenshot_2026_03_26_040237.png",
+                title: "دعوة كافي",
+                link: "https://bade395.github.io/NAJDORA/"
+            }
+        ];
+
+        let currentImageIndex = 0;
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function openModal(index) {
+            currentImageIndex = index;
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalCounter = document.getElementById('modalCounter');
+            
+            modalImage.src = portfolio[index].src;
+            modalTitle.textContent = portfolio[index].title;
+            modalCounter.textContent = (index + 1) + ' / ' + portfolio.length;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(event) {
+            if (event.target.id === 'imageModal') {
+                closeModalBtn();
+            }
+        }
+
+        function closeModalBtn() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            
+            if (currentImageIndex < 0) {
+                currentImageIndex = portfolio.length - 1;
+            } else if (currentImageIndex >= portfolio.length) {
+                currentImageIndex = 0;
+            }
+            
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalCounter = document.getElementById('modalCounter');
+            
+            modalImage.style.opacity = '0';
+            
+            setTimeout(() => {
+                modalImage.src = portfolio[currentImageIndex].src;
+                modalTitle.textContent = portfolio[currentImageIndex].title;
+                modalCounter.textContent = (currentImageIndex + 1) + ' / ' + portfolio.length;
+                modalImage.style.opacity = '1';
+            }, 200);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            const modal = document.getElementById('imageModal');
+            if (modal.classList.contains('active')) {
+                if (event.key === 'Escape') {
+                    closeModalBtn();
+                } else if (event.key === 'ArrowLeft') {
+                    changeImage(1);
+                } else if (event.key === 'ArrowRight') {
+                    changeImage(-1);
+                }
+            }
+        });
+
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            const phoneNumber = "966570310415";
+            const whatsappMessage = encodeURIComponent(
+                `*استفسار جديد من الموقع*\n\n` +
+                `*الاسم:* ${name}\n` +
+                `*الخدمة المطلوبة:* ${service}\n` +
+                `*التفاصيل:* ${message}`
+            );
+            
+            window.open(`https://wa.me/${phoneNumber}?text=${whatsappMessage}`, '_blank');
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
